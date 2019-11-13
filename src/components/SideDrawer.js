@@ -69,8 +69,6 @@ export default function SideDrawer() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer("right", true)}>Open Right</Button>
-
       <Drawer
         anchor="right"
         open={state.right}

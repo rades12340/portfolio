@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Container } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,6 +34,8 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar = () => {
   const classes = useStyles();
+  const matches = useMediaQuery("(min-width:600px)");
+  const matches1 = useMediaQuery("(max-width:600px)");
   return (
     <div className={classes.root}>
       <AppBar
@@ -51,13 +54,10 @@ const Navbar = () => {
               <Button color="inherit">About me</Button>
               <Button color="inherit">Marketing Services</Button>
               <Button color="inherit">Testimonials</Button>
-              <Button color="inherit" className={classes.secondaryButton}>
-                Get in touch
-              </Button>
-              <Button color="inherit" className={classes.thernaryButton}>
-                Get in touch
-              </Button>
+              <Button color="inherit">Get in touch</Button>
+              <Button color="inherit">Get in touch</Button>
             </div>
+            <div></div>
           </Toolbar>
         </Container>
       </AppBar>

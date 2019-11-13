@@ -5,7 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    height: "90vh"
+    height: "90vh",
+    backgroundImage: "url('/background.jpeg')"
   },
   container: {
     margin: "auto",

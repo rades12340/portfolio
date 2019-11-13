@@ -1,14 +1,36 @@
 import React, { useReducer } from "react";
-import UiContext from "./authContext";
+import UiContext from "./uiContext";
 import uiReducer from "./uiReducer";
-import {} from "./types";
+import { TOGGLE_DRAWER } from "./types";
 
-const AuthState = props => {
-  const initialState = {};
+const UiState = props => {
+  const initialState = {
+    right: false
+  };
 
   const [state, dispatch] = useReducer(uiReducer, initialState);
 
-  return <UiContext.Provider value={{}}>{props.children}</UiContext.Provider>;
+  const toggleDrawer = (side, open) => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    dispatch({ type: TOGGLE_DRAWER });
+  };
+
+  return (
+    <UiContext.Provider
+      value={{
+        right: state.right,
+        toggleDrawer
+      }}
+    >
+      {props.children}
+    </UiContext.Provider>
+  );
 };
 
-export default AuthState;
+export default UiState;
