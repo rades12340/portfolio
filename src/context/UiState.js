@@ -18,7 +18,7 @@ const UiState = props => {
       return;
     }
 
-    dispatch({ type: TOGGLE_DRAWER });
+    dispatch({ type: TOGGLE_DRAWER, payload: open });
   };
 
   return (

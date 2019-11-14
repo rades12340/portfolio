@@ -1,22 +1,61 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { Button, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   hero: {
     height: "90vh",
-    backgroundImage: "url('/background.jpeg')"
+    backgroundImage: "url('/Component 14.svg')",
+    backgroundPosition: "bottom right",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    color: "#black",
+    [theme.breakpoints.down("sm")]: {
+      backgroundPosition: "center",
+      boxShadow: "1px 1px 15px silver"
+    },
+    "@media (min-width:900px) and (min-height: 900px)": {
+      height: "50vh"
+    }
   },
   container: {
-    margin: "auto",
-    // margin: 0,
-    textAlign: "center",
+    // position: "relative",
     height: "100%",
+    display: "grid",
+    placeItems: "center"
+  },
+  heroLeft: {
+    position: "relative",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "flex-start",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      alignItems: "center",
+      textAlign: "center"
+    }
+  },
+  heroRight: {
+    position: "relative",
+    display: "grid",
+    placeItems: "center",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
+    }
+  },
+  img: {
+    width: "70%"
+  },
+  header1: {
+    fontWeight: 700,
+    lineHeight: "1.3"
+  },
+  button: {
+    margin: "1rem 0"
   }
 }));
 
@@ -24,21 +63,24 @@ const Hero = () => {
   const classes = useStyles();
   return (
     <div className={classes.hero}>
-      <Container className={classes.container} maxWidth="md">
-        <Typography variant="h3" component="h2">
-          Freelance Online Marketing, SEO & AdWords Consultant
-        </Typography>
-        <Typography variant="h5" component="h2">
-          Hello, My name is Daryl and I'm an online marketing consultant based
-          in Stoke-on-Trent, UK.
-        </Typography>
-        <Typography variant="body1" component="h2">
-          I help my clients' grow their businesses through proven online
-          marketing methods that increase leads and achieve measurable success.
-          I work with: Accountants, professional service companies, government
-          agencies, e-commerce brands, investment backed start-ups and everyone
-          in between.
-        </Typography>
+      <Container className={classes.container}>
+        <Grid container>
+          <Grid item md={6} sm={12} className={classes.heroLeft}>
+            <Typography variant="h3" component="h2" className={classes.header1}>
+              Freelance Online Marketing, SEO & AdWords Consultant
+            </Typography>
+            <Button
+              variant="contained"
+              href="#contained-buttons"
+              className={classes.button}
+            >
+              More about me
+            </Button>
+          </Grid>
+          <Grid item md={6} sm={12} className={classes.heroRight}>
+            <img className={classes.img} src="/undraw_pie_graph_x9dy.svg" />
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );

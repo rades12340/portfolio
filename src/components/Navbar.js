@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Container } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import UiContext from "../context/uiContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,22 +20,28 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between"
   },
-  secondaryButton: {
-    "&:hover": {
-      backgroundColor: "#c4c4c4"
+  navigation: {
+    display: "none",
+    ["@media (min-width:890px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      display: "block"
     }
   },
-  thernaryButton: {
-    "&:hover": {
-      backgroundColor: "#939292"
+  navigation1: {
+    display: "none",
+    ["@media (max-width:890px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      display: "block"
     }
   }
 }));
 
 const Navbar = () => {
   const classes = useStyles();
-  const matches = useMediaQuery("(min-width:600px)");
-  const matches1 = useMediaQuery("(max-width:600px)");
+  const uiContext = useContext(UiContext);
+
+  const { toggleDrawer } = uiContext;
+
   return (
     <div className={classes.root}>
       <AppBar
@@ -50,14 +56,16 @@ const Navbar = () => {
               alt="onlinemarketingconsultant-stoke-on-trent"
             />
 
-            <div>
+            <div className={classes.navigation}>
               <Button color="inherit">About me</Button>
               <Button color="inherit">Marketing Services</Button>
               <Button color="inherit">Testimonials</Button>
               <Button color="inherit">Get in touch</Button>
               <Button color="inherit">Get in touch</Button>
             </div>
-            <div></div>
+            <div className={classes.navigation1}>
+              <Button onClick={toggleDrawer("right", true)}>Open Right</Button>
+            </div>
           </Toolbar>
         </Container>
       </AppBar>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
@@ -9,10 +9,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import UiContext from "../context/uiContext";
 
 const useStyles = makeStyles({
   list: {
-    width: 450
+    width: "80%"
   },
   fullList: {
     width: "auto"
@@ -21,20 +22,23 @@ const useStyles = makeStyles({
 
 export default function SideDrawer() {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    right: false
-  });
+  const uiContext = useContext(UiContext);
 
-  const toggleDrawer = (side, open) => event => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+  const { toggleDrawer, right } = uiContext;
+  // const [state, setState] = React.useState({
+  //   right: false
+  // });
 
-    setState({ ...state, [side]: open });
-  };
+  // const toggleDrawer = (side, open) => event => {
+  //   if (
+  //     event.type === "keydown" &&
+  //     (event.key === "Tab" || event.key === "Shift")
+  //   ) {
+  //     return;
+  //   }
+
+  //   setState({ ...state, [side]: open });
+  // };
 
   const sideList = side => (
     <div
@@ -71,7 +75,7 @@ export default function SideDrawer() {
     <div>
       <Drawer
         anchor="right"
-        open={state.right}
+        open={right}
         onClose={toggleDrawer("right", false)}
       >
         {sideList("right")}

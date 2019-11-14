@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import SideDrawer from "./components/SideDrawer";
 import UiState from "./context/UiState";
+import AboutMe from "./components/AboutMe";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Navbar />
           <Hero />
           <SideDrawer />
+          <AboutMe />
         </div>
       </Router>
     </UiState>
