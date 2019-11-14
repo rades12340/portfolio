@@ -43,7 +43,7 @@ const AboutMe = () => {
     <Container>
       <Grid container spacing={3} style={{ padding: "2em 0" }}>
         <Grid item xs={12} sm={12} md={12} className={classes.header}>
-          <Typography variant="h3" component="h2" className={classes.header}>
+          <Typography variant="h3" className={classes.header}>
             Delivering a personal service...
           </Typography>
           <Typography variant="body1" className={classes.header}>

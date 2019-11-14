@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <div className={classes.root}>
       <AppBar
-        position="sticky"
+        position="fixed"
         style={{ backgroundColor: "white", color: "black" }}
       >
         <Container>

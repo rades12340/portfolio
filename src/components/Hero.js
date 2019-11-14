@@ -6,7 +6,7 @@ import { Button, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    height: "90vh",
+    height: "100vh",
     backgroundImage: "url('/Component 14.svg')",
     backgroundPosition: "bottom right",
     backgroundSize: "cover",
@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   container: {
-    // position: "relative",
+    position: "relative",
+    top: "10vh",
     height: "100%",
     display: "grid",
     placeItems: "center"
@@ -77,8 +78,9 @@ const Hero = () => {
               More about me
             </Button>
           </Grid>
+
           <Grid item md={6} sm={12} className={classes.heroRight}>
-            <img className={classes.img} src="/undraw_pie_graph_x9dy.svg" />
+            <img className={classes.img} src="/undraw_all_the_data_h4ki.svg" />
           </Grid>
         </Grid>
       </Container>
