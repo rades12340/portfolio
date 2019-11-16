@@ -1,13 +1,19 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import SideDrawer from "./components/SideDrawer";
 import UiState from "./context/UiState";
 import AboutMe from "./components/AboutMe";
 import Services from "./components/Services";
-import Count from "./components/Count";
+import CountUp from "./components/CountUp";
+import Testimonials from "./components/Testimonials";
+import FormDialog from "./components/FormDialog";
+import Contact from "./components/Contact";
+import { BrowserRouter as Router } from "react-router-dom";
+import Clients from "./components/Clients";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,10 +22,15 @@ function App() {
         <div className="App">
           <Navbar />
           <Hero />
-          <SideDrawer />
           <AboutMe />
+          <SideDrawer />
           <Services />
-          <Count />
+          <CountUp />
+          <Testimonials />
+          <FormDialog />
+          <Clients />
+          <Contact />
+          <Footer />
         </div>
       </Router>
     </UiState>

@@ -1,11 +1,12 @@
 import React, { useReducer } from "react";
 import UiContext from "./uiContext";
 import uiReducer from "./uiReducer";
-import { TOGGLE_DRAWER } from "./types";
+import { TOGGLE_DRAWER, OPEN_DIALOG, CLOSE_DIALOG } from "./types";
 
 const UiState = props => {
   const initialState = {
-    right: false
+    right: false,
+    open: false
   };
 
   const [state, dispatch] = useReducer(uiReducer, initialState);
@@ -21,11 +22,21 @@ const UiState = props => {
     dispatch({ type: TOGGLE_DRAWER, payload: open });
   };
 
+  const openDialog = () => {
+    dispatch({ type: OPEN_DIALOG });
+  };
+  const closeDialog = () => {
+    dispatch({ type: CLOSE_DIALOG });
+  };
+
   return (
     <UiContext.Provider
       value={{
         right: state.right,
-        toggleDrawer
+        open: state.open,
+        toggleDrawer,
+        openDialog,
+        closeDialog
       }}
     >
       {props.children}

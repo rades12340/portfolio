@@ -8,11 +8,17 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: "60vh",
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
+    [theme.breakpoints.down("sm")]: {
+      height: "40vh"
+    },
+    "@media (min-width:600px) and (min-height: 750px)": {
+      height: "40vh"
+    }
   },
   photoSection: {
     position: "relative",
-    height: "100%",
+    // height: "100%",
     width: "100%",
     height: "60vh",
     // backgroundImage: "url('/undraw_mobile_marketing_iqbr .svg')",
@@ -22,6 +28,9 @@ const useStyles = makeStyles(theme => ({
     backgroundAttachment: "initial",
     [theme.breakpoints.down("sm")]: {
       height: "60vh"
+    },
+    "@media (min-width:600px) and (min-height: 750px)": {
+      height: "40vh"
     }
   },
   switchFlex: {
@@ -35,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 const Services = () => {
   const classes = useStyles();
   return (
-    <div>
+    <div id="services">
       <Container>
         <Grid
           container
@@ -44,7 +53,11 @@ const Services = () => {
         >
           <Grid item md={12} style={{ textAlign: "center" }}>
             <Typography variant="h3">How I can help you</Typography>
-            <Typography variant="h5">
+            <Typography
+              variant="h5"
+              style={{ padding: "1em 0 0" }}
+              gutterBottom
+            >
               My marketing services are cost effective, expertly implemented and
               have a personal touch. I don't do off-the-shelf solutions, each
               service is tailored to you.

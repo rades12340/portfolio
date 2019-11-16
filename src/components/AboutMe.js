@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Typography, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
+import UiContext from "../context/uiContext";
 
 const useStyles = makeStyles(theme => {
   return {
@@ -15,8 +16,11 @@ const useStyles = makeStyles(theme => {
 
     aboutMe: {
       padding: theme.spacing(3),
-      backgroundColor: "#E2E1E4",
-      textAlign: "left"
+      backgroundColor: "#E9F5EC",
+      textAlign: "left",
+      [theme.breakpoints.down("sm")]: {
+        textAlign: "center"
+      }
     },
     photoSection: {
       position: "relative",
@@ -24,7 +28,7 @@ const useStyles = makeStyles(theme => {
       width: "100%",
       backgroundImage: "url('/photo about me page.png')",
       backgroundSize: "cover",
-      backgroundPosition: "center ",
+      backgroundPosition: "center",
       backgroundAttachment: "initial",
       [theme.breakpoints.down("sm")]: {
         height: "468px"
@@ -33,20 +37,31 @@ const useStyles = makeStyles(theme => {
     button: {
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2)
+    },
+    hr: {
+      height: "4px",
+      margin: "1em 0",
+      backgroundColor: "#4DA13F",
+      [theme.breakpoints.down("sm")]: {
+        margin: "auto"
+      }
     }
   };
 });
 
 const AboutMe = () => {
   const classes = useStyles();
+  const uiContext = useContext(UiContext);
+
+  const { openDialog } = uiContext;
   return (
-    <Container>
+    <Container id="about">
       <Grid container spacing={3} style={{ padding: "2em 0" }}>
         <Grid item xs={12} sm={12} md={12} className={classes.header}>
           <Typography variant="h3" className={classes.header}>
             Delivering a personal service...
           </Typography>
-          <Typography variant="body1" className={classes.header}>
+          <Typography variant="h5" className={classes.header}>
             I'm all about getting to know my clients and their customers. By
             having a closer relationship, I can truly understand your needs and
             achieve better results.
@@ -58,12 +73,12 @@ const AboutMe = () => {
               ABOUT ME
             </Typography>
             <Typography variant="h4">
-              I'm all about getting to know my clients and their customers. By
-              having a closer relationship, I can truly understand your needs
-              and achieve better results.
+              I'm an experienced freelance marketer and I love to see my
+              clients' businesses grow.
             </Typography>
             <br />
-            <Typography variant="body1">
+            <hr align="left" width="25%" className={classes.hr} />
+            <Typography variant="h6">
               Growing up in a successful family business has taught me 2 things:
               service and quality are paramount. Without both, your work is
               worthless.
@@ -76,21 +91,15 @@ const AboutMe = () => {
             </Typography>
             <Button
               variant="contained"
-              href="#contained-buttons"
+              onClick={openDialog}
               className={classes.button}
             >
-              More about me
+              Get a quote
             </Button>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
-          <Paper className={classes.photoSection}>
-            {/* <img
-              className={classes.img}
-              src={"/photo about me page.png"}
-              alt=""
-            /> */}
-          </Paper>
+          <Paper className={classes.photoSection}></Paper>
         </Grid>
       </Grid>
     </Container>
