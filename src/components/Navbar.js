@@ -27,14 +27,14 @@ const useStyles = makeStyles(theme => ({
   },
   navigation: {
     display: "none",
-    ["@media (min-width:890px)"]: {
+    [theme.breakpoints.up("md")]: {
       display: "block"
     }
   },
   navigation1: {
     display: "none",
 
-    ["@media (max-width:890px)"]: {
+    [theme.breakpoints.down("sm")]: {
       display: "block"
     }
   },
